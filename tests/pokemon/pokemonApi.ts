@@ -1,4 +1,5 @@
 import { APIRequestContext } from "@playwright/test";
+import { attachResponse } from "./utils/attachmentUtils";
 
 export async function getPokemon(
   name: string,
@@ -10,5 +11,10 @@ export async function getPokemon(
   if (response.status() !== 200) {
     throw new Error(`Error fetching Pokemon: ${name}`);
   }
-  return response.json();
+  const data = await response.json();
+
+  // Llamada para adjuntar el JSON de respuesta a un attachment
+  attachResponse("response.json", data);
+
+  return data;
 }
