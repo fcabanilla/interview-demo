@@ -9,7 +9,7 @@ const config: PlaywrightTestConfig = {
       "allure-playwright",
       {
         resultsDir: "allure-results",
-        detail: true,
+        detail: false,
         suiteTitle: true,
         links: {
           issue: {
@@ -41,6 +41,7 @@ const config: PlaywrightTestConfig = {
       },
     ],
   ],
+  fullyParallel: true,
 };
 
 export default config;

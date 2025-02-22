@@ -1,5 +1,5 @@
 import { APIRequestContext } from "@playwright/test";
-import { attachResponse } from "./utils/attachmentUtils";
+import { attachResponse } from "../../utils/attachmentUtils";
 
 export async function getPokemon(
   name: string,
