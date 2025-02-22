@@ -1,30 +1,23 @@
 // pages/PracticePage.ts
-import { expect, Page } from "@playwright/test";
+import { Page } from "@playwright/test";
+import * as allure from "allure-js-commons";
 import { BasePage } from "./BasePage";
 
 export class PracticePage extends BasePage {
-  // Radio Buttons
-  private radioButton1 = "#radio1";
-  private radioButton2 = "#radio2";
-  private radioButton3 = "#radio3";
+  // Selectores de elementos
+  private radioButton1 = 'input[name="radioButton"][value="radio1"]';
+  private radioButton2 = 'input[name="radioButton"][value="radio2"]';
+  private radioButton3 = 'input[name="radioButton"][value="radio3"]';
 
-  // Checkboxes
   private option1Checkbox = "#checkBoxOption1";
   private option2Checkbox = "#checkBoxOption2";
   private option3Checkbox = "#checkBoxOption3";
 
-  // Dropdown
   private dropdown = "#dropdown-class-example";
 
-  // Alerts
   private alertButton = "#alertbtn";
   private confirmButton = "#confirmbtn";
 
-  // Tables
-  private instructorTable = "#product";
-  private employeeTable = "#webtable";
-
-  // Mouse Hover
   private mouseHoverButton = "#mousehover";
 
   constructor(page: Page) {
@@ -32,45 +25,56 @@ export class PracticePage extends BasePage {
   }
 
   async selectRadioButton(option: number) {
-    const radioButtonSelector = `input[name="radioButton"][value="radio2"]`;
-
-    // Esperar a que el elemento esté presente en el DOM
-    await this.page.waitForSelector(radioButtonSelector, { state: "attached" });
-
-    // Hacer clic en el radio button
-    await this.page.locator(radioButtonSelector).check();
+    await allure.step(`Seleccionar el radio button ${option}`, async () => {
+      const radioButtons = [
+        this.radioButton1,
+        this.radioButton2,
+        this.radioButton3,
+      ];
+      await this.page.waitForSelector(radioButtons[option - 1], {
+        state: "visible",
+      });
+      await this.page.click(radioButtons[option - 1]);
+    });
   }
 
   async selectCheckbox(option: number) {
-    const checkboxes = [
-      this.option1Checkbox,
-      this.option2Checkbox,
-      this.option3Checkbox,
-    ];
-    await this.page.click(checkboxes[option - 1]);
+    await allure.step(`Seleccionar el checkbox ${option}`, async () => {
+      const checkboxes = [
+        this.option1Checkbox,
+        this.option2Checkbox,
+        this.option3Checkbox,
+      ];
+      await this.page.click(checkboxes[option - 1]);
+    });
   }
 
   async selectDropdownOption(value: string) {
-    await this.page.selectOption(this.dropdown, value);
+    await allure.step(
+      `Seleccionar la opción ${value} del dropdown`,
+      async () => {
+        await this.page.selectOption(this.dropdown, value);
+      }
+    );
   }
 
   async triggerAlert() {
-    this.page.once("dialog", async (dialog) => {
-      console.log(`Dialog message: ${dialog.message()}`);
-      await dialog.accept();
+    await allure.step("Disparar alerta", async () => {
+      await this.page.click(this.alertButton);
+      this.page.on("dialog", (dialog) => dialog.accept());
     });
-    await this.page.click(this.alertButton);
   }
 
   async triggerConfirmAlert() {
-    this.page.once("dialog", async (dialog) => {
-      console.log(`Dialog message: ${dialog.message()}`);
-      await dialog.dismiss();
+    await allure.step("Disparar alerta de confirmación", async () => {
+      await this.page.click(this.confirmButton);
+      this.page.on("dialog", (dialog) => dialog.dismiss());
     });
-    await this.page.click(this.confirmButton);
   }
 
   async mouseHover() {
-    await this.page.hover(this.mouseHoverButton);
+    await allure.step("Realizar hover sobre el botón", async () => {
+      await this.page.hover(this.mouseHoverButton);
+    });
   }
 }

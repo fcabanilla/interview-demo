@@ -4,7 +4,7 @@ import { PageObjectManager } from "../../managers/PageObjectManager";
 import { PracticePage } from "../../pageObjects/PracticePage";
 import { TableHandler } from "../../pageObjects/TableHandler";
 
-test.describe("demo", () => {
+test.describe("Demo Forte Group", () => {
   let dropdownPage: any; // Ajustar tipo según corresponda
   test.beforeEach(async ({ page }) => {
     const pom = new PageObjectManager(page);
@@ -26,7 +26,7 @@ test.describe("demo", () => {
   });
 });
 
-test.describe("demo2", () => {
+test.describe("Demo Practice Page", () => {
   let practicePage: PracticePage;
   let storedPage: any; // para tests que lo requieran
   test.beforeEach(async ({ page }) => {
