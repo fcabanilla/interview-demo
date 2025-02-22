@@ -16,7 +16,7 @@ Este proyecto tiene como objetivo automatizar pruebas de interfaz de usuario (UI
   - **PracticePage:** Gestiona interacciones con elementos de la página, incluyendo:
     - Radio Buttons (seleccionados con atributos combinados).
     - Checkboxes (accedidos por su id).
-    - Dropdown (`select` identificado por su id).
+    - Dropdown (`<select>` identificado por su id).
     - Alertas y confirmaciones (manejo de diálogos de JavaScript en Playwright).
     - Mouse Hover (para visualizar contenidos adicionales).
   - **TableHandler:** Maneja la extracción de datos de tablas a través de selectores específicos.
