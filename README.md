@@ -80,7 +80,7 @@ El proyecto fue inicialmente desarrollado como parte de una entrevista de trabaj
 1. Clona el repositorio:
 
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/fcabanilla/interview-demo
    ```
 
 2. Instala las dependencias:
@@ -90,6 +90,7 @@ El proyecto fue inicialmente desarrollado como parte de una entrevista de trabaj
    ```
 
 3. Configura Playwright (si es necesario, ejecuta):
+
    ```bash
    npx playwright install
    ```
