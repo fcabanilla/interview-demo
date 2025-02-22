@@ -102,19 +102,23 @@ El proyecto fue inicialmente desarrollado como parte de una entrevista de trabaj
 - `/allure-results`: Directorio generado para los resultados de Allure.
 - `/allure-report`: Directorio generado para los reportes de Allure.
 
+Aquí tienes el contenido modificado y completado:
+
+---
+
 ## Contribuciones
 
-Las contribuciones son bienvenidas. Por favor, sigue las buenas prácticas de desarrollo y abre un issue para discutir cambios importantes.
+Las contribuciones son bienvenidas. Si deseas mejorar el proyecto, por favor abre un issue para discutir los cambios importantes o envía un pull request con tus propuestas. Asegúrate de seguir las buenas prácticas de desarrollo, incluir pruebas y documentar adecuadamente tus cambios.
 
 ## Licencia
 
-[Indicar la licencia del proyecto]
+Este proyecto se distribuye bajo la Licencia MIT. Consulta el archivo LICENSE para obtener más información.
 
 ## Contacto
 
-[Agregar información de contacto o perfil de GitHub]
+Para consultas, sugerencias o colaboraciones, puedes contactarme a través de mi perfil de GitHub: [fcabanilla](https://github.com/fcabanilla) o enviarme un correo a [federico.cabanilla@gmail.com](mailto:federico.cabanilla@gmail.com).
 
 ## Página de Pruebas
 
-Las pruebas fueron realizadas para la siguiente página web:
+Las pruebas fueron realizadas para la siguiente página web:  
 [Practice Page](https://rahulshettyacademy.com/AutomationPractice/)
