@@ -33,6 +33,9 @@ const config: PlaywrightTestConfig = {
           },
         ],
         environmentInfo: {
+          // Environment information that will be attached to the report
+          browser: process.env.BROWSER,
+          browser_version: process.env.BROWSER_VERSION,
           os_platform: os.platform(),
           os_release: os.release(),
           os_version: os.version(),
@@ -42,6 +45,10 @@ const config: PlaywrightTestConfig = {
     ],
   ],
   fullyParallel: true,
+  use: {
+    screenshot: "only-on-failure",
+    video: "on-first-retry",
+  },
 };
 
 export default config;
