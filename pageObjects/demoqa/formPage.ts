@@ -1,6 +1,7 @@
 import { Page } from "@playwright/test";
 import { formSelectors, url } from "./selectors";
 import { FormData } from "./selectors";
+import * as allure from "allure-js-commons";
 
 export class FormPage {
   private readonly url: string = url;
@@ -14,7 +15,9 @@ export class FormPage {
   }
 
   async navigateToForm(): Promise<void> {
-    await this.page.goto(this.url);
+    await allure.step("Navigating to form", async () => {
+      await this.page.goto(this.url);
+    });
   }
 
   // Método helper para llenar un campo si el valor está definido
@@ -31,26 +34,30 @@ export class FormPage {
 
   // Método que itera dinámicamente sobre las propiedades de FormData y completa los campos correspondientes
   async fillForm(data: FormData): Promise<void> {
-    for (const [key, selector] of Object.entries(this.selectors) as [
-      keyof FormData,
-      string
-    ][]) {
-      const value = data[key];
-      if (value) {
-        await this.fillField(selector, value);
+    await allure.step("Filling in form fields", async () => {
+      for (const [key, selector] of Object.entries(this.selectors) as [
+        keyof FormData,
+        string
+      ][]) {
+        const value = data[key];
+        if (value) {
+          await this.fillField(selector, value);
+        }
       }
-    }
+    });
   }
 
   // Método que itera dinámicamente sobre las propiedades de FormData y obtiene los valores correspondientes
   async getFormData(): Promise<FormData> {
-    const data: FormData = {};
-    for (const [key, selector] of Object.entries(this.selectors) as [
-      keyof FormData,
-      string
-    ][]) {
-      data[key] = await this.getFieldValue(selector);
-    }
-    return data;
+    return await allure.step("Getting form data", async () => {
+      const data: FormData = {};
+      for (const [key, selector] of Object.entries(this.selectors) as [
+        keyof FormData,
+        string
+      ][]) {
+        data[key] = await this.getFieldValue(selector);
+      }
+      return data;
+    });
   }
 }
