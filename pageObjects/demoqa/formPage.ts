@@ -1,26 +1,13 @@
 import { Page } from "@playwright/test";
-
-// Interfaz que representa los datos del formulario con propiedades opcionales
-export interface FormData {
-  firstName?: string;
-  lastName?: string;
-  // Se pueden agregar otros campos opcionales, por ejemplo:
-  // email?: string;
-  // phone?: string;
-}
+import { formSelectors, url } from "./selectors";
+import { FormData } from "./selectors";
 
 export class FormPage {
-  private readonly url: string = "https://demoqa.com/automation-practice-form";
+  private readonly url: string = url;
   private page: Page;
 
   // Mapeo entre las propiedades de FormData y los selectores correspondientes
-  private readonly selectors: Record<keyof FormData, string> = {
-    firstName: "#firstName",
-    lastName: "#lastName",
-    // Si se agregan nuevos campos, se deben mapear aquí, e.g.:
-    // email: "#userEmail",
-    // phone: "#userPhone",
-  };
+  private readonly selectors = formSelectors;
 
   constructor(page: Page) {
     this.page = page;
@@ -37,13 +24,33 @@ export class FormPage {
     }
   }
 
+  // Método helper para obtener el valor de un campo
+  private async getFieldValue(selector: string): Promise<string> {
+    return await this.page.inputValue(selector);
+  }
+
   // Método que itera dinámicamente sobre las propiedades de FormData y completa los campos correspondientes
   async fillForm(data: FormData): Promise<void> {
-    for (const [key, selector] of Object.entries(this.selectors) as [keyof FormData, string][]) {
+    for (const [key, selector] of Object.entries(this.selectors) as [
+      keyof FormData,
+      string
+    ][]) {
       const value = data[key];
       if (value) {
         await this.fillField(selector, value);
       }
     }
+  }
+
+  // Método que itera dinámicamente sobre las propiedades de FormData y obtiene los valores correspondientes
+  async getFormData(): Promise<FormData> {
+    const data: FormData = {};
+    for (const [key, selector] of Object.entries(this.selectors) as [
+      keyof FormData,
+      string
+    ][]) {
+      data[key] = await this.getFieldValue(selector);
+    }
+    return data;
   }
 }

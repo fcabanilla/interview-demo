@@ -8,6 +8,15 @@ const config: PlaywrightTestConfig = {
     [
       "allure-playwright",
       {
+        name: "QA Automation - Playwright - DEMO",
+        plugins: {
+          awesome: {
+            options: {
+              singleFile: true,
+              reportLanguage: "en",
+            },
+          },
+        },
         resultsDir: "allure-results",
         detail: false,
         suiteTitle: true,
