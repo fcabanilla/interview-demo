@@ -1,4 +1,37 @@
 {
+  "name": "interview-demo",
+  "version": "1.0.0",
+  "description": "A demo project for automated end-to-end testing using Playwright and TypeScript.",
+  "homepage": "https://github.com/fcabanilla/interview-demo#readme",
+  "bugs": {
+    "url": "https://github.com/fcabanilla/interview-demo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcabanilla/interview-demo.git"
+  },
+  "license": "MIT",
+  "author": "fcabanilla",
+  "type": "module",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:report": "playwright show-report"
+  },
+  "dependencies": {
+    "allure-js-commons": "^3.2.0",
+    "charenc": "^0.0.2",
+    "crypt": "^0.0.2",
+    "fsevents": "^2.3.2",
+    "is-buffer": "^1.1.6",
+    "md5": "^2.3.0",
+    "playwright": "^1.50.1",
+    "playwright-core": "^1.50.1",
+    "undici-types": "^6.20.0"
+  },
   "devDependencies": {
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.4",

@@ -1,6 +1,5 @@
 import { Page } from "@playwright/test";
-import { formSelectors, url } from "./selectors";
-import { FormData } from "./selectors";
+import { formSelectors, url, FormData } from "./formPage.selectors";
 import * as allure from "allure-js-commons";
 
 export class FormPage {

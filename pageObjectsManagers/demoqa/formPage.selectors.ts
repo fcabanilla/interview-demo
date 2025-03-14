@@ -4,6 +4,7 @@ export interface FormData {
   lastName?: string;
   email?: string;
   phone?: string;
+  subject?: string;
 }
 
 export const formSelectors: Record<keyof FormData, string> = {
@@ -11,6 +12,7 @@ export const formSelectors: Record<keyof FormData, string> = {
   lastName: "#lastName",
   email: "#userEmail",
   phone: "#userNumber",
+  subject: "#subjectsInput"
 };
 
 export const url: string = "https://demoqa.com/automation-practice-form";

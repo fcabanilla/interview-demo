@@ -1,4 +1,4 @@
-import { FormData } from "../../pageObjects/demoqa/selectors";
+import { FormData } from "../../pageObjects/demoqa/formPage.selectors";
 
 export const dataTests: FormData[] = [
   { firstName: "John", lastName: "Doe" },
